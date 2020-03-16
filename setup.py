@@ -19,7 +19,15 @@ setuptools.setup(
     packages=setuptools.find_packages(where="cdk_app_python"),
 
     install_requires=[
-        "aws-cdk.core==1.26.0",
+        "aws-cdk.core",
+        "aws-cdk.aws_ec2",
+        "aws-cdk.aws_iam",
+        "aws-cdk.aws_logs",
+        "aws-cdk.aws_ecs",
+        "aws-cdk.aws_dynamodb", 
+        "aws-cdk.aws_lambda",
+        "aws-cdk.aws_apigateway",
+        "boto3"
     ],
 
     python_requires=">=3.6",

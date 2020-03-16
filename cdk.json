@@ -1,7 +1,65 @@
 {
-  "app": "python3 app.py",
-  "context": {
-    "@aws-cdk/core:enableStackNameDuplicates": "true",
-    "aws-cdk:enableDiffNoFail": "true"
-  }
+    "app": "python3 app.py",
+    "context": {
+        "Vpc": {
+            "dev": "dev",
+            "qa": null,
+            "stg": null,
+            "prod": "prod"
+        },
+        "ConnectPortByOs": {
+            "Windows2016Base": 3389,
+            "AmazonLinux2": 22
+        },
+        "AmiByOs": {
+            "us-east-1": {
+                "Windows2016Base": "ami-06bee8e1000e44ca4",
+                "AmazonLinux2": "ami-0c6b1d09930fac512"
+            },
+            "us-west-2": {
+                "Windows2016Base": "ami-07f35a597a32e470d",
+                "AmazonLinux2": "ami-0cb72367e98845d43"
+            }
+        },
+        "BaseCidr": {
+            "us-east-1": {
+                "dev": "10.0.0.0/16",
+                "qa": "10.1.0.0/16",
+                "stg": "10.2.0.0/16",
+                "prod": "10.3.0.0/16"
+            },
+            "us-west-2": {
+                "dev": "10.10.0.0/16",
+                "qa": "10.11.0.0/16",
+                "stg": "10.12.0.0/16",
+                "prod": "10.13.0.0/16"
+            },
+            "eu-west-1": {
+                "dev": "10.10.0.0/16",
+                "qa": "10.11.0.0/16",
+                "stg": "10.12.0.0/16",
+                "prod": "10.13.0.0/16"
+            }
+        },
+        "AwsDns": true,
+        "HighAvailability": {
+            "dev": false,
+            "qa": false,
+            "stg": true,
+            "prod": true
+        },
+        "AllowedValues": {
+            "DeployEnv": ["dev", "qa", "stg", "prod"],
+            "InstanceType": ["t2.nano", "t2.micro", "t2.small", "t2.medium", "m4.large", "m4.xlarge"],
+            "OperatingSystem": ["AmazonLinux2", "Windows2016Base"]
+        },
+        "Defaults": {
+            "DeployEnv": "dev",
+            "InstanceType": "t2.nano",
+            "OperatingSystem": "AmazonLinux2",
+            "KeyName": "",
+            "PublicCidr": "0.0.0.0/0"
+        }
+
+    }
 }
